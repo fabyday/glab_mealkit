@@ -1,0 +1,24 @@
+
+cmake_minimum_required(VERSION 3.15)
+project(ffmpeg)
+
+
+set(ffmpeg_ROOT ${CMAKE_CURRENT_LIST_DIR})
+set(ffmpeg_ROOT ${ffmpeg_ROOT} PARENT_SCOPE)
+set(ffmpeg_INCLUDE ${ffmpeg_ROOT}/include)
+set(ffmpeg_INCLUDE ${ffmpeg_INCLUDE} PARENT_SCOPE)
+
+
+FILE(GLOB ffmpeg_LIBRARIES ${ffmpeg_ROOT}/lib/*.lib)
+FILE(GLOB ffmpeg_BINARY ${ffmpeg_ROOT}/bin/*.dll)
+set(ffmpeg_LIBRARIES ${ffmpeg_LIBRARIES} PARENT_SCOPE)
+set(ffmpeg_BINARY ${ffmpeg_BINARY} PARENT_SCOPE)
+
+message("root ${ffmpeg_ROOT}\n")
+message("include ${ffmpeg_INCLUDE}\n")
+message("libraries ${ffmpeg_LIBRARIES}\n")
+message("binaries ${ffmpeg_BINARY}\n")
+
+
+
+

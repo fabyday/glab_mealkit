@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+
+
+
+build
+.vs
+external
+out
+test
