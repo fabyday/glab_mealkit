@@ -1,0 +1,15 @@
+#if !defined(__THREAD_CONFIGURE_H__)
+#define __THREAD_CONFIGURE_H__
+
+#if defined(OPENMP)
+#define GLAB_OMP_SET_NUM_THREADS(NUM_THREAD) omp_set_num_threads(NUM_THREAD);
+#define GLAB_OMP_PARALLE #pragma omp parallel
+#define GLAB_OMP_FOR #pragma omp for
+#else
+#define GLAB_OMP_PARALLE
+#define GLAB_OMP_FOR 
+#define GLAB_OMP_SET_NUM_THREADS(NUM_THREAD)
+#endif
+
+#define GLAB_THREAD_NUM @GLAB_THREAD_NUM@
+#endif

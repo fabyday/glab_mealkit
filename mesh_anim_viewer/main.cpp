@@ -24,47 +24,42 @@
 
 
 #include <iostream>
-#include "encoder.h"
 #include <vector>
 #include <string>
 #include "viewer.h"
+#include "encoder.h"
+#include "filemanager.h"
 
 using U8encoder = Encoder<>; //default
 
 int main(int argc, char** argv) {
 	/*
-	prog root_dir fname_prefix_pattern1 fname_prefix_pattern2 ... fname_prefix_pattern_n
+	prog output_file_path file extension input_root_dir fname_prefix_pattern1 fname_prefix_pattern2 ... fname_prefix_pattern_n
 	*/
-	std::string root = argv[1];
+	std::string output_name = argv[1]; //output full path ex ) ./test
+	std::string ext = argv[2];
+	std::string root = argv[3]; // input root
+	//int num = std::stoi(argv[4]);
 	std::vector<std::string> fname_prefix;
-	fname_prefix.reserve(argc - 1);
-	for (int i = 2; i < argc; i++) {
+	fname_prefix.reserve(argc - 4);
+	for (int i = 4; i < argc; i++) {
 		fname_prefix.push_back(argv[i]);
 	}
 
 
 
 	
-	
-
-
-
-
-
+	//file inflate
+	FileManager fmg(root, fname_prefix, ".obj", false);
+	fmg.compile();
+	std::vector<FileManager::vec> fname_list = fmg.get_all();
 
 	std::cout << "init ..." << std::endl;
-	U8encoder e("test");
-	Viewer s(1920, 1080,  false);
-	s.run(e, fname_prefix);
+	U8encoder e(output_name, ext, 1920, 1080, 1);
+	Viewer view(800, 400,  false);
+	view.run(e, fname_list);
 
-
-	
 	std::cout << "end ..." << std::endl;
-
-
-
-
-
 
 	return 0;
 }

@@ -39,3 +39,7 @@ build
 external
 out
 test
+
+
+
+mesh_anim_viewer/thread_configure.h
